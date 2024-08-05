@@ -1,0 +1,20 @@
+# Ignore build output
+dist
+build
+
+# Ignore node_modules directory
+node_modules
+
+# Ignore specific files
+*.min.js
+*.bundle.js
+
+# Ignore configuration files
+*.config.js
+*.config.ts
+.prettierrc
+.prettierignore
+
+# Ignore other specific files or directories as needed
+coverage
+*.md
