@@ -5,6 +5,8 @@ build
 # Ignore node_modules directory
 node_modules
 
+package-lock.json
+
 # Ignore specific files
 *.min.js
 *.bundle.js

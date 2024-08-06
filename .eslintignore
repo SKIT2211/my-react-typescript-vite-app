@@ -1,0 +1,42 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+build/
+*.min.js
+*.bundle.js
+
+# Temporary files
+*.log
+*.tmp
+*.swp
+*.swo
+*.DS_Store
+
+# IDE and editor configurations
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Package lock files (if you use npm)
+package-lock.json
+
+# Yarn lock file (if you use Yarn)
+yarn.lock
+
+# TypeScript output (if you compile TypeScript)
+*.d.ts
+
+# Coverage reports (if you use a coverage tool)
+coverage/
+*.lcov
+
+# Next.js specific (if you use Next.js)
+.next/
+
+# Other build artifacts or environment-specific files
+*.env
+*.env.*
+*.local
