@@ -27,6 +27,13 @@ export const loginApi = async (data: {
 
     const user = response?.data;
     if (user) {
+      const { accessToken, refreshToken, sessionId, roles } = user;
+
+      localStorage.setItem('accessToken', JSON.stringify(accessToken));
+      localStorage.setItem('refreshToken', JSON.stringify(refreshToken));
+      localStorage.setItem('sessionId', JSON.stringify(sessionId));
+      localStorage.setItem('role', JSON.stringify(roles[0]));
+
       Toast({
         message: `${user?.message}`,
         variant: 'success',

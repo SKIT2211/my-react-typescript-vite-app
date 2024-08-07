@@ -3,14 +3,39 @@ import Home from '../pages/Home';
 import PageNotFound from '../pages/PageNotFound';
 import SignIn from '../pages/SignIn';
 import Dashboard from '../pages/Dashboard';
+import MainLayout from '../layouts/MainLayout';
+import {
+  InitialRender,
+  LoginCheckRoute,
+  PrivateRouteForAdmin,
+} from './protected-routes/Private';
 
 const Router: React.FC = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/login" element={<SignIn />} />
+      <Route path="/" element={<InitialRender />} />
+      <Route
+        path="/home"
+        element={
+          <MainLayout>
+            <Home />
+          </MainLayout>
+        }
+      />
+      <Route element={<PrivateRouteForAdmin />}>
+        <Route
+          path="/dashboard"
+          element={
+            <MainLayout>
+              <Dashboard />
+            </MainLayout>
+          }
+        />
+      </Route>
+
+      <Route element={<LoginCheckRoute />}>
+        <Route path="/login" element={<SignIn />} />
+      </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   </BrowserRouter>

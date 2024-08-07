@@ -217,8 +217,6 @@ const SignIn: React.FC = () => {
               }}
             >
               {isLoading ? <LoadingSpinner /> : 'Sign In'}
-              {/* <LoadingSpinner /> */}
-              {/* hello */}
             </Button>
             <Grid container>
               <Grid item xs>

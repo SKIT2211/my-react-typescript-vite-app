@@ -9,10 +9,18 @@ const SpinnerContainer = styled(Box)(() => ({
   '& div': {
     width: '10px',
     height: '10px',
-    backgroundColor: '#b46677',
     borderRadius: '50%',
     margin: '0 3px',
     animation: 'bounce 1.4s infinite ease-in-out both',
+  },
+  '#first': {
+    backgroundColor: 'rgba(40,140,200,1)',
+  },
+  '#second': {
+    backgroundColor: 'rgba(200,20,20,1)',
+  },
+  '#third': {
+    backgroundColor: 'rgba(10,200,10,1)',
   },
   '& div:nth-child(2)': {
     animationDelay: '-0.32s',
@@ -36,9 +44,9 @@ const SpinnerContainer = styled(Box)(() => ({
 const LoadingSpinner: React.FC = () => {
   return (
     <SpinnerContainer>
-      <div />
-      <div />
-      <div />
+      <div id="first" />
+      <div id="second" />
+      <div id="third" />
     </SpinnerContainer>
   );
 };

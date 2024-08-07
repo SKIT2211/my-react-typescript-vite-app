@@ -1,12 +1,17 @@
-import * as React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { Box } from '@mui/material';
+import { forwardRef } from 'react';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+  Box,
+  Button,
+  Typography,
+} from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
 import { TableVirtuoso, TableComponents } from 'react-virtuoso';
 
 interface Data {
@@ -84,7 +89,7 @@ const rows: Data[] = Array.from({ length: 200 }, (_, index) => {
 });
 
 const VirtuosoTableComponents: TableComponents<Data> = {
-  Scroller: React.forwardRef<HTMLDivElement>((props, ref) => (
+  Scroller: forwardRef<HTMLDivElement>((props, ref) => (
     <TableContainer component={Paper} {...props} ref={ref} />
   )),
   Table: (props) => (
@@ -93,11 +98,11 @@ const VirtuosoTableComponents: TableComponents<Data> = {
       sx={{ borderCollapse: 'separate', tableLayout: 'fixed' }}
     />
   ),
-  TableHead: React.forwardRef<HTMLTableSectionElement>((props, ref) => (
+  TableHead: forwardRef<HTMLTableSectionElement>((props, ref) => (
     <TableHead {...props} ref={ref} />
   )),
   TableRow,
-  TableBody: React.forwardRef<HTMLTableSectionElement>((props, ref) => (
+  TableBody: forwardRef<HTMLTableSectionElement>((props, ref) => (
     <TableBody {...props} ref={ref} />
   )),
 };
@@ -109,10 +114,13 @@ function fixedHeaderContent() {
         <TableCell
           key={column.dataKey}
           variant="head"
-          align={column.numeric || false ? 'right' : 'left'}
+          align={column.numeric ? 'right' : 'left'}
           style={{ width: column.width }}
           sx={{
-            backgroundColor: 'background.paper',
+            backgroundColor: 'rgba(175,175,175,0.8)',
+            fontWeight: 'bold',
+            borderBottom: '2px solid #CB3066',
+            padding: '16px',
           }}
         >
           {column.label}
@@ -124,30 +132,84 @@ function fixedHeaderContent() {
 
 function rowContent(_index: number, row: Data) {
   return (
-    <React.Fragment>
+    <>
       {columns.map((column) => (
         <TableCell
           key={column.dataKey}
-          align={column.numeric || false ? 'right' : 'left'}
+          align={column.numeric ? 'right' : 'left'}
         >
           {row[column.dataKey]}
         </TableCell>
       ))}
-    </React.Fragment>
+    </>
   );
 }
 
 export default function Dashboard() {
   return (
-    <Box sx={{ height: '80vh' }}>
-      <Paper style={{ height: '100%', width: '100%' }}>
-        <TableVirtuoso
-          data={rows}
-          components={VirtuosoTableComponents}
-          fixedHeaderContent={fixedHeaderContent}
-          itemContent={rowContent}
-        />
-      </Paper>
+    <Box
+      sx={{
+        height: '100%',
+        width: '100%',
+      }}
+    >
+      <Box
+        sx={{
+          height: '60px',
+          width: '100%',
+          px: '20px',
+          display: 'flex',
+          justifyContent: 'end',
+        }}
+      >
+        <Button
+          variant="contained"
+          sx={{
+            height: '24px',
+            width: '146px',
+            margin: 'auto 0',
+            background: '#0281b0',
+            '&:hover': {
+              background: '#ed5384',
+            },
+          }}
+          startIcon={<AddIcon />}
+        >
+          {/* <AddIcon sx={{ height: '18px', marginRight: '3px' }} /> */}
+          <Typography
+            variant="body2"
+            sx={{
+              textTransform: 'none',
+            }}
+          >
+            Add Product
+          </Typography>
+        </Button>
+      </Box>
+      <Box
+        sx={{
+          height: 'calc(100% - 60px)',
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <Paper
+          style={{
+            padding: '0px 20px 20px',
+            height: '100%',
+            width: '100%',
+          }}
+        >
+          <TableVirtuoso
+            data={rows}
+            components={VirtuosoTableComponents}
+            fixedHeaderContent={fixedHeaderContent}
+            itemContent={rowContent}
+          />
+        </Paper>
+      </Box>
     </Box>
   );
 }
