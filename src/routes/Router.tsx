@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from '../pages/Home';
 import PageNotFound from '../pages/PageNotFound';
 import SignIn from '../pages/SignIn';
-import Dashboard from '../pages/Dashboard';
+import Dashboard from '../pages/dashboard/Dashboard';
 import MainLayout from '../layouts/MainLayout';
 import {
   InitialRender,

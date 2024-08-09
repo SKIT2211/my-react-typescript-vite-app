@@ -1,5 +1,4 @@
 import { Button, Typography, Box } from '@mui/material';
-// import { Add as AddIcon } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
 const Home: React.FC = () => {
@@ -23,7 +22,10 @@ const Home: React.FC = () => {
           alignItems: 'center',
           justifyContent: 'center',
           height: '60%',
-          width: '60%',
+          width: {
+            xs: '80%',
+            lg: '60%',
+          },
           backgroundColor: 'rgba(147, 147, 147, 0.2)',
           borderRadius: '10px',
         }}
@@ -34,7 +36,10 @@ const Home: React.FC = () => {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            width: '60%',
+            width: {
+              xs: '80%',
+              lg: '60%',
+            },
           }}
         >
           <Typography

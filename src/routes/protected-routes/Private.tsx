@@ -23,8 +23,6 @@ export const InitialRender = () => {
   if (roleCheck && accessTokenCheck && refreshTokenCheck && sessionIdCheck) {
     return <Navigate to="/home" />;
   } else {
-    console.log('heloooo');
-
     return <Navigate to="/login" />;
   }
 };
@@ -32,7 +30,6 @@ export const InitialRender = () => {
 export const PrivateRouteForAdmin = () => {
   const roleGet: roleCheckType = localStorage.getItem('role');
   const roleCheck = roleGet ? JSON.parse(roleGet) : null;
-  console.log(roleCheck);
 
   return roleCheck === 'ADMIN' ? <Outlet /> : <Navigate to="/login" />;
 };

@@ -19,7 +19,6 @@ export default function MenuAppBar() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const auth = localStorage.getItem('role');
-  console.log(auth);
 
   const handleMenu = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
